@@ -12,4 +12,23 @@
         public AccountRoutings[] account_routings { get; set; }
         public object[] account_rules { get; set; }
     }
+
+    public class AccountRoutings
+    {
+        public string scheme { get; set; }
+        public string address { get; set; }
+    }
+
+    public class Balance
+    {
+        public string currency { get; set; }
+        public string amount { get; set; }
+    }
+
+    public class Owner
+    {
+        public string id { get; set; }
+        public string provider { get; set; }
+        public string display_name { get; set; }
+    }
 }
