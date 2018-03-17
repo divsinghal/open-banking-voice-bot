@@ -26,15 +26,15 @@ namespace Azure4Alexa.Santander
 
         private static AlexaUtils.SimpleIntentResponse ParseResults(Transactions result)
         {
-            string stringToRead = $"<speak>You have made {result.transactions.Length} transactions today.<break time=\"2s\" />";
+            string stringToRead = $"<speak>You have made {result.transactions.Length} transactions today.<break time=\"1s\" />";
             string stringForCard = String.Empty;
 
             for (var i = 0; i < result.transactions.Length; i++)
             {
                 stringToRead += $"Transaction {i + 1}";
-                stringToRead += $"<break time=\"2s\" />{result.transactions[i].details.description}" +
-                                $"<break time=\"2s\" />total of {result.transactions[i].details.value.amount} pounds." +
-                                "<break time=\"3s\" />";
+                stringToRead += $"<break time=\"1s\" />{result.transactions[i].details.description}" +
+                                $"<break time=\"1s\" />total of {result.transactions[i].details.value.amount} pounds." +
+                                "<break time=\"2s\" />";
             }
 
             stringToRead += "</speak>";
