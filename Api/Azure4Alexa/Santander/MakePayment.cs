@@ -4,6 +4,10 @@ using AlexaSkillsKit.Speechlet;
 using Azure4Alexa.Alexa;
 using Azure4Alexa.Helper;
 using Azure4Alexa.Models.Payments;
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Queue;
 using Session = AlexaSkillsKit.Speechlet.Session;
 
 namespace Azure4Alexa.Santander
@@ -29,6 +33,7 @@ namespace Azure4Alexa.Santander
             };
             var result = await api.PostAsAsync<PaymentResponse>(Constants.ApiEndpoints.MakePayment, payment);
             var simpleIntentResponse = ParseResults(result);
+            await PostToQueue();
             return AlexaUtils.BuildSpeechletResponse(simpleIntentResponse, true);
         }
 
@@ -43,6 +48,17 @@ namespace Azure4Alexa.Santander
                 cardText = string.Empty,
                 ssmlString = stringToRead,
             };
+        }
+
+        private static async Task PostToQueue()
+        {
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+                CloudConfigurationManager.GetSetting("StorageConnectionString"));
+            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+            CloudQueue queue = queueClient.GetQueueReference("paymentqueue");
+            queue.CreateIfNotExists();
+            CloudQueueMessage message = new CloudQueueMessage("TRUE");
+            await queue.AddMessageAsync(message);
         }
     }
 }
