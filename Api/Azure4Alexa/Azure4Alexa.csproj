@@ -134,6 +134,7 @@
     <Compile Include="Outlook\Calendar.cs" />
     <Compile Include="Outlook\Mail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Santander\Winners.cs" />
     <Compile Include="Santander\MakePayment.cs" />
     <Compile Include="Santander\GetTransactions.cs" />
     <Compile Include="Santander\GetBalance.cs" />

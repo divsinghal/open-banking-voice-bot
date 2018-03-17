@@ -146,6 +146,8 @@ namespace Azure4Alexa.Alexa
                     return await GetBalance.GetResults(session);
                 case "PAYMENT":
                     return await MakePayment.GetResults(session, decimal.Parse(intentRequest.Intent.Slots["amount"].Value), intentRequest.Intent.Slots["account"].Value);
+                case "WINNERS":
+                    return await Winners.GetResults();
 
                 //return Task.FromResult<SpeechletResponse>(Tfl.Status.GetResults(session, httpClient));
 
