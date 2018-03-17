@@ -1,0 +1,16 @@
+Register your consumer
+Thanks for registering your consumer with the Open Bank API! Here is your developer information. Please save it in a secure location.
+
+Consumer ID71
+Application TypeWeb
+Application NameVoiceBot
+User redirect URLhttp://localhost:8080
+Developer Emailben@claytob.co.uk
+App DescriptionAlexa voice controlled banking :)
+Consumer Keyfdjik1n3x1ikdtcgka3cscke5zo02xlezkwgefcx
+Consumer Secret1lc0nrb5qitjj35dyspc3on3qt3ecatx2gkc23s1
+OAuth Endpointhttps://santander.openbankproject.com/oauth/initiate
+OAuth DocumentationHow to use OAuth for OpenBankProject
+Direct Login Endpointhttps://santander.openbankproject.com/my/logins/direct
+Direct Login DocumentationHow to use Direct Login
+Please tell us more about your App / Startup here
