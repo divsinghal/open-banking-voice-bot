@@ -7,6 +7,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Security;
+using Azure4Alexa.Helper;
+using Azure4Alexa.Models;
 
 namespace Azure4Alexa.Controllers
 {
@@ -17,8 +19,16 @@ namespace Azure4Alexa.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> AlexaSession()
         {
-            var alexaSpeechletAsync = new Alexa.AlexaSpeechletAsync();
-            return await alexaSpeechletAsync.GetResponseAsync(Request);
+            try
+            {
+                var alexaSpeechletAsync = new Alexa.AlexaSpeechletAsync();
+                return await alexaSpeechletAsync.GetResponseAsync(Request);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
     }

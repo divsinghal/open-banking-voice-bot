@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using AlexaSkillsKit.Speechlet;
-using AlexaSkillsKit.Slu;
 using AlexaSkillsKit.UI;
 using System.Diagnostics;
 using AlexaSkillsKit.Authentication;
@@ -9,6 +8,11 @@ using AlexaSkillsKit.Json;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Azure4Alexa.Helper;
+using Azure4Alexa.Models;
+using Azure4Alexa.Santander;
+using Intent = AlexaSkillsKit.Slu.Intent;
+using Session = AlexaSkillsKit.Speechlet.Session;
 
 namespace Azure4Alexa.Alexa
 {
@@ -131,13 +135,19 @@ namespace Azure4Alexa.Alexa
 
             var httpClient = new HttpClient();
 
-            switch (intentName)
+            switch (intentName.ToUpper())
             {
-
-                // call the Transport for London (TFL) API and get status
-
-                case ("TflStatusIntent"):
+                case "TFLSTATUSINTENT":
                     return await Tfl.Status.GetResults(session, httpClient);
+                case "BALANCE":
+                    return await GetBalance.GetResults(session);
+                case "TRANSACTIONS":
+                    return await GetTransactions.GetResults(session, intentRequest.Intent.Slots["date"].Value);
+                case "PAYMENT":
+                    return await MakePayment.GetResults(session, decimal.Parse(intentRequest.Intent.Slots["amount"].Value), intentRequest.Intent.Slots["account"].Value);
+                case "WINNERS":
+                    return await Winners.GetResults();
+
                 //return Task.FromResult<SpeechletResponse>(Tfl.Status.GetResults(session, httpClient));
 
                 // Advanced: call the Outlook API and read the number of unread emails and subject and sender of the first five
