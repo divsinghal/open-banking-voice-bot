@@ -1,4 +1,4 @@
-﻿namespace Azure4Alexa.Models
+﻿namespace Azure4Alexa.Models.Accounts
 {
     public class Account
     {

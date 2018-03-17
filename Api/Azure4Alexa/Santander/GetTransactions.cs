@@ -8,6 +8,7 @@ using AlexaSkillsKit.Speechlet;
 using Azure4Alexa.Alexa;
 using Azure4Alexa.Helper;
 using Azure4Alexa.Models;
+using Azure4Alexa.Models.Transactions;
 using Newtonsoft.Json.Linq;
 using Session = AlexaSkillsKit.Speechlet.Session;
 
@@ -26,8 +27,7 @@ namespace Azure4Alexa.Santander
 
         private static AlexaUtils.SimpleIntentResponse ParseResults(Transactions result)
         {
-            string stringToRead = $"<speak>You have made {result.transactions.Length} transactions today.<break time=\"1s\" />";
-            string stringForCard = String.Empty;
+            var stringToRead = $"<speak>You have made {result.transactions.Length} transactions today.<break time=\"1s\" />";
 
             for (var i = 0; i < result.transactions.Length; i++)
             {
@@ -36,12 +36,11 @@ namespace Azure4Alexa.Santander
                                 $"<break time=\"1s\" />total of {result.transactions[i].details.value.amount} pounds." +
                                 "<break time=\"2s\" />";
             }
-
             stringToRead += "</speak>";
 
             return new AlexaUtils.SimpleIntentResponse
             {
-                cardText = stringForCard,
+                cardText = string.Empty,
                 ssmlString = stringToRead,
             };
         }

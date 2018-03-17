@@ -8,6 +8,7 @@ using AlexaSkillsKit.Speechlet;
 using Azure4Alexa.Alexa;
 using Azure4Alexa.Helper;
 using Azure4Alexa.Models;
+using Azure4Alexa.Models.Accounts;
 using Newtonsoft.Json.Linq;
 using Session = AlexaSkillsKit.Speechlet.Session;
 
