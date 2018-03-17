@@ -137,13 +137,12 @@ namespace Azure4Alexa.Alexa
 
             switch (intentName.ToUpper())
             {
-
-                // call the Transport for London (TFL) API and get status
-
-                case ("TFLSTATUSINTENT"):
+                case "TFLSTATUSINTENT":
                     return await Tfl.Status.GetResults(session, httpClient);
-                case ("BALANCE"):
+                case "BALANCE":
                     return await GetBalance.GetResults(session);
+                case "TRANSACTIONS":
+                    return await GetTransactions.GetResults(session, intentRequest.Intent.Slots["date"].Value);
                 case "PAYMENT":
                     return await MakePayment.GetResults(session, decimal.Parse(intentRequest.Intent.Slots["amount"].Value), intentRequest.Intent.Slots["account"].Value);
                 case "WINNERS":
