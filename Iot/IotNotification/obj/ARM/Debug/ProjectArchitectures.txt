@@ -1,0 +1,1 @@
+C:\Code\GIT\open-banking-voice-bot\Iot\IotNotification\IotNotification.csproj;arm
