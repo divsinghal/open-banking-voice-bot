@@ -118,12 +118,18 @@
     <Compile Include="Alexa\AlexaConstants.cs" />
     <Compile Include="Alexa\AlexaSpeechletAsync.cs" />
     <Compile Include="Alexa\AlexaUtils.cs" />
+    <Compile Include="Constants\ApiEndpoints.cs" />
+    <Compile Include="Helper\ApiClient.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AlexaController.cs" />
     <Compile Include="Controllers\AlexaImagesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\AccountRoutings.cs" />
+    <Compile Include="Models\Balance.cs" />
+    <Compile Include="Models\Owner.cs" />
     <Compile Include="Outlook\Calendar.cs" />
     <Compile Include="Outlook\Mail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,7 +153,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
