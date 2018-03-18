@@ -123,8 +123,8 @@ namespace Azure4Alexa.Alexa
             // session.User.AccessToken contains the Oauth 2.0 access token if the user has linked to your auth system
 
             // Get intent from the request object.
-            Intent intent = intentRequest.Intent;
-            string intentName = (intent != null) ? intent.Name : null;
+            var intent = intentRequest.Intent;
+            var intentName = intent?.Name;
 
             // If there's no match between the intent passed and what we support, (i.e. you forgot to implement
             // a handler for the intent), default the user to the standard OnLaunch request
@@ -147,47 +147,6 @@ namespace Azure4Alexa.Alexa
                     return await MakePayment.GetResults(session, decimal.Parse(intentRequest.Intent.Slots["amount"].Value), intentRequest.Intent.Slots["account"].Value);
                 case "WINNERS":
                     return await Winners.GetResults();
-
-                //return Task.FromResult<SpeechletResponse>(Tfl.Status.GetResults(session, httpClient));
-
-                // Advanced: call the Outlook API and read the number of unread emails and subject and sender of the first five
-                // you will need to register for a Client ID with Microsoft and configure your skill for Oauth
-                // uncomment the code below when you're ready
-
-                // See README.md in the Outlook folder
-
-                //case ("OutlookUnreadIntent"):
-                //    return await Outlook.Mail.GetUnreadEmailCount(session, httpClient);
-                //return Task.FromResult<SpeechletResponse>(Outlook.Mail.GetUnreadEmailCount(session, httpClient));
-
-                // If you're feeling lucky - this intent reads your Outlook calendar
-                // You need to first successfully configure the email skill that's above
-
-                // Add these scopes to the Alexa Config Portal
-                // https://outlook.office.com/calendars.read
-                // https://outlook.office.com/mailboxsettings.readwrite
-                // 
-                // if you were an early adopter of Azure4Alexa, you'll need to update the IntentSchema and Sample Utterances
-                // in the Alexa Config Portal.  Copy and Paste again the contents of Outlook/Registration/AlexaIntentSchema.json and
-                // Outlook/Registration/AlexaSampleUtterances.txt into the Alexa Config Portal under "Interaction Model" for your
-                // skill
-
-                // nezt uncomment the case statement below
-
-                // then unlink/link your skill and sign in again
-
-                //case ("OutlookCalendarIntent"):
-                //    return await Outlook.Calendar.GetOutlookEventCount(session, httpClient);
-
-                // add your own intent handler
-
-                // case ("YourCustomIntent"):
-                //   return await YourCustomIntentClass(session, whateverYouNeedToPass);
-                //   invalid pattern with change // return Task.FromResult<SpeechletResponse>(YourCustomIntentClass(session, whateverYouNeedToPass));
-
-                // did you forget to implement an intent?
-                // just send the user to the intent-less utterance
-
                 default:
                     return await Task.FromResult<SpeechletResponse>(GetOnLaunchAsyncResult(session));
             }
@@ -200,7 +159,11 @@ namespace Azure4Alexa.Alexa
             // called by OnLaunchAsync - when the user invokes your skill without an intent
             // called by OnIntentAsync if you forget to map an intent to an action
 
-            return AlexaUtils.BuildSpeechletResponse(new AlexaUtils.SimpleIntentResponse() { cardText = "Thanks for giving us a try" }, true);
+            return AlexaUtils.BuildSpeechletResponse(new AlexaUtils.SimpleIntentResponse
+            {
+                cardText = "",
+                ssmlString = "<speak>Voice bot<break time=\"0.2s\" />obviously</speak>"
+            }, true);
         }
 
 

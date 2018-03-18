@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
 using AlexaSkillsKit.Speechlet;
 using Azure4Alexa.Alexa;
 using Azure4Alexa.Helper;
-using Azure4Alexa.Models;
 using Azure4Alexa.Models.Transactions;
-using Newtonsoft.Json.Linq;
 using Session = AlexaSkillsKit.Speechlet.Session;
 
 namespace Azure4Alexa.Santander
@@ -27,22 +23,14 @@ namespace Azure4Alexa.Santander
 
         private static AlexaUtils.SimpleIntentResponse ParseResults(Transactions result)
         {
-            var transactions = result.transactions.Take(2).ToList();
-            var stringToRead = $"<speak>You have made {transactions.Count} transactions today.<break time=\"1s\" />";
-
-            for (var i = 0; i < transactions.Count; i++)
-            {
-                stringToRead += $"Transaction {i + 1}";
-                stringToRead += $"<break time=\"1s\" />{transactions[i].details.description}" +
-                                $"<break time=\"1s\" /> total of {transactions[i].details.value.amount} pounds." +
-                                "<break time=\"2s\" />";
-            }
-            stringToRead += "</speak>";
+            var spending = result.transactions.Where(x => decimal.Parse(x.details.value.amount) > 0)
+                .Sum(x => decimal.Parse(x.details.value.amount)).ToString(CultureInfo.InvariantCulture).Replace(".00", "");
+            var stringToRead = $"<speak>There's {result.transactions.Length} transactions and you've spent {spending} pounds</speak>";
 
             return new AlexaUtils.SimpleIntentResponse
             {
                 cardText = string.Empty,
-                ssmlString = stringToRead,
+                ssmlString = stringToRead
             };
         }
     }

@@ -32,15 +32,11 @@ namespace Azure4Alexa.Santander
 
         private static AlexaUtils.SimpleIntentResponse ParseResults(Account result)
         {
-            string stringToRead = String.Empty;
-            string stringForCard = String.Empty;
-
-            stringToRead += "<speak><break time=\"2s\" /> ";
-            stringToRead += $"Your account balance is {result.balance.amount} pounds.</speak>";
+            string stringToRead = $"<speak>Your balance is {result.balance.amount.Replace(".00", "")} pounds.</speak>";
 
             return new AlexaUtils.SimpleIntentResponse
             {
-                cardText = stringForCard,
+                cardText = "",
                 ssmlString = stringToRead,
             };
         }

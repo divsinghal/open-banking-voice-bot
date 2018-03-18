@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 using System.Threading.Tasks;
 
 namespace Azure4Alexa.Controllers
@@ -9,8 +10,15 @@ namespace Azure4Alexa.Controllers
         [Route("api/iot")]
         public async Task<bool> Get()
         {
-            var response = await Iot.GetPayments.HasPayment();
-            return response;
+            try
+            {
+                var response = await Iot.GetPayments.HasPayment();
+                return response;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

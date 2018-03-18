@@ -32,15 +32,17 @@ namespace Azure4Alexa.Santander
                 }
             };
             var result = await api.PostAsAsync<PaymentResponse>(Constants.ApiEndpoints.MakePayment, payment);
-            var simpleIntentResponse = ParseResults(result);
+            var balance = await GetBalance.GetBalanceFromOpenBanking();
+            var simpleIntentResponse = ParseResults(result, balance.balance.amount);
             await PostToQueue();
             return AlexaUtils.BuildSpeechletResponse(simpleIntentResponse, true);
         }
 
-        private static AlexaUtils.SimpleIntentResponse ParseResults(PaymentResponse result)
+        private static AlexaUtils.SimpleIntentResponse ParseResults(PaymentResponse result, string newBalance)
         {
-            var stringToRead = "<speak><break time=\"1s\" />";
-            stringToRead += $"Payment of {result.details.value.amount} pounds made to {result.details.to.account_id} successfully.";
+            var stringToRead = "<speak>Your voice has been verified.";
+            stringToRead += $"<break time=\"0.2s\" />{result.details.value.amount} pounds have been paid to {result.details.to.account_id} successfully.";
+            stringToRead += $"<break time=\"0.2s\" />Your new balance is {newBalance.Replace(".00", "")} pounds";
             stringToRead += "</speak>";
 
             return new AlexaUtils.SimpleIntentResponse

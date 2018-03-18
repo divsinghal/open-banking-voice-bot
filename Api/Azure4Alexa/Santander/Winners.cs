@@ -18,22 +18,17 @@ namespace Azure4Alexa.Santander
     {
         public static async Task<SpeechletResponse> GetResults()
         {
-            var api = new ApiClient();
             var simpleIntentResponse = ParseResults();
             return AlexaUtils.BuildSpeechletResponse(simpleIntentResponse, true);
         }
 
         private static AlexaUtils.SimpleIntentResponse ParseResults()
         {
-            string stringToRead = String.Empty;
-            string stringForCard = String.Empty;
-
-            stringToRead += "<speak><break time=\"2s\" /> ";
-            stringToRead += $"Voice bot<break time=\"0.5s\" /> obviously</speak>";
+            var stringToRead = "<speak>Voice bot<break time=\"0.2s\" />obviously</speak>";
 
             return new AlexaUtils.SimpleIntentResponse
             {
-                cardText = stringForCard,
+                cardText = "",
                 ssmlString = stringToRead,
             };
         }
