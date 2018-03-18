@@ -135,6 +135,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Iot\GetPayments.cs" />
     <Compile Include="Models\Accounts\Account.cs" />
     <Compile Include="Models\AlexaRequest.cs" />
     <Compile Include="Models\Payments\PaytmentResponse.cs" />
