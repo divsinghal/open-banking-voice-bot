@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Code\GIT\open-banking-voice-bot\Iot\IotNotification\bin\ARM\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>B398C711BFCB8EF1F0714497D63F0208230ACE251DBFAF4B5525220DAF3A1413</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>20E4E11D5060F8E9FA5640589EDA32159260F6DE2B9008737FD3D136A6FCD015</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>IotNotification-uwp_1.0.0.0_arm__8jqjk2q2swvy8</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>IotNotification-uwp_8jqjk2q2swvy8!App</RegisteredUserModeAppID>
     <RegisteredPackageID>IotNotification-uwp</RegisteredPackageID>
@@ -31,17 +31,17 @@
     <AppXManifest Include="C:\Code\GIT\open-banking-voice-bot\Iot\IotNotification\bin\ARM\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-17T20:35:38.434</Modified>
+      <Modified>2018-03-18T09:03:31.662</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Code\GIT\open-banking-voice-bot\Iot\IotNotification\bin\ARM\Debug\IotNotification.winmd">
       <PackagePath>IotNotification.winmd</PackagePath>
-      <Modified>2018-03-17T20:35:28.708</Modified>
+      <Modified>2018-03-18T09:03:11.452</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\divya\.nuget\packages\newtonsoft.json\10.0.2\lib\netstandard1.3\Newtonsoft.Json.dll">
+    <AppxPackagedFile Include="C:\Users\divya\.nuget\packages\newtonsoft.json\11.0.1\lib\netstandard2.0\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
-      <Modified>2017-04-02T16:46:32.000</Modified>
+      <Modified>2018-02-18T09:44:54.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackagesFallback\runtime.win10-arm.microsoft.netcore.universalwindowsplatform\6.0.4\runtimes\win10-arm\nativeassets\uap10.0.15138\clrcompression.dll">
       <PackagePath>clrcompression.dll</PackagePath>
@@ -705,41 +705,41 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Code\GIT\open-banking-voice-bot\Iot\IotNotification\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2018-03-17T19:13:51.071</Modified>
+      <Modified>2018-03-17T20:52:36.921</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Code\GIT\open-banking-voice-bot\Iot\IotNotification\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2018-03-17T16:36:44.523</Modified>
+      <Modified>2018-03-17T20:52:36.883</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Code\GIT\open-banking-voice-bot\Iot\IotNotification\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-17T16:36:44.523</Modified>
+      <Modified>2018-03-17T20:52:36.886</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Code\GIT\open-banking-voice-bot\Iot\IotNotification\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-17T16:36:44.523</Modified>
+      <Modified>2018-03-17T20:52:36.889</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Code\GIT\open-banking-voice-bot\Iot\IotNotification\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-17T16:36:44.523</Modified>
+      <Modified>2018-03-17T20:52:36.892</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Code\GIT\open-banking-voice-bot\Iot\IotNotification\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-17T16:36:44.523</Modified>
+      <Modified>2018-03-17T20:52:36.895</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Code\GIT\open-banking-voice-bot\Iot\IotNotification\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-17T16:36:44.523</Modified>
+      <Modified>2018-03-17T20:52:36.899</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Code\GIT\open-banking-voice-bot\Iot\IotNotification\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-17T16:36:44.523</Modified>
+      <Modified>2018-03-17T20:52:36.902</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.16299.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -748,7 +748,7 @@
     <AppxPackagedFile Include="C:\Code\GIT\open-banking-voice-bot\Iot\IotNotification\bin\ARM\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-17T20:35:31.726</Modified>
+      <Modified>2018-03-18T09:03:20.052</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Code\GIT\open-banking-voice-bot\Iot\IotNotification\bin\ARM\Debug\Core\UWPShim.exe">
       <PackagePath>UWPShim.exe</PackagePath>

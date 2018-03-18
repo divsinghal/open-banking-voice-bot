@@ -6,6 +6,7 @@ using System.Net.Http;
 using Windows.ApplicationModel.Background;
 using Windows.Devices.Gpio;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 // The Background Application template is documented at http://go.microsoft.com/fwlink/?LinkID=533884&clcid=0x409
 
@@ -18,7 +19,7 @@ namespace IotNotification
             int led_Pin = 35;
             var gpio = GpioController.GetDefault();
 
-            //var a = FindMessage();
+            var a = FindMessage();
             GpioPin pin = gpio.OpenPin(led_Pin);
             pin.SetDriveMode(GpioPinDriveMode.Output);
             pin.Write(GpioPinValue.Low);
@@ -27,11 +28,21 @@ namespace IotNotification
             Task.Delay(1000).Wait();
         }
 
-        //private object FindMessage()
-        //{
-        //    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        //        CloudConfigurationManager.GetSetting("StorageConnectionString"));
-        //    CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-        //}
+        private async  Task<bool> FindMessage()
+        {
+            bool success = false;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://azure4alexaben.azurewebsites.net/api/iot");
+                var response =await client.GetAsync("");
+                var result = response.Content.ReadAsStringAsync().Result;
+                var account = JsonConvert.DeserializeObject<Account>(result);
+                if(account != null){
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

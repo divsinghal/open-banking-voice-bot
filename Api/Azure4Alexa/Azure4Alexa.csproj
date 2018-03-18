@@ -127,6 +127,7 @@
     <Compile Include="Alexa\AlexaSpeechletAsync.cs" />
     <Compile Include="Alexa\AlexaUtils.cs" />
     <Compile Include="Constants\ApiEndpoints.cs" />
+    <Compile Include="Controllers\IotController.cs" />
     <Compile Include="Helper\ApiClient.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AlexaController.cs" />

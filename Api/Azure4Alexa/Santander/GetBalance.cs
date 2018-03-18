@@ -18,10 +18,16 @@ namespace Azure4Alexa.Santander
     {
         public static async Task<SpeechletResponse> GetResults(Session session)
         {
-            var api = new ApiClient();
-            var result = await api.GetAsync<Account>(Constants.ApiEndpoints.MyAccount);
+            var result = await GetBalanceFromOpenBanking();
             var simpleIntentResponse = ParseResults(result);
             return AlexaUtils.BuildSpeechletResponse(simpleIntentResponse, true);
+        }
+
+        public static async Task<Account> GetBalanceFromOpenBanking()
+        {
+            var api = new ApiClient();
+            var result = await api.GetAsync<Account>(Constants.ApiEndpoints.MyAccount);
+            return result;
         }
 
         private static AlexaUtils.SimpleIntentResponse ParseResults(Account result)

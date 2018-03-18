@@ -43,6 +43,7 @@
     <Extension Category="windows.activatableClass.inProcessServer">
       <InProcessServer>
         <Path>CLRHost.dll</Path>
+        <ActivatableClass ActivatableClassId="IotNotification.Account" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="IotNotification.StartupTask" ThreadingModel="both" />
       </InProcessServer>
     </Extension>

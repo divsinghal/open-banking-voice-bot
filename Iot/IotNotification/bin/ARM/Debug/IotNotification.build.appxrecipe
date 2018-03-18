@@ -28,7 +28,7 @@
     <AppxPackagedFile Include="C:\Code\GIT\open-banking-voice-bot\Iot\IotNotification\bin\ARM\Debug\IotNotification.winmd">
       <PackagePath>IotNotification.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\divya\.nuget\packages\newtonsoft.json\10.0.2\lib\netstandard1.3\Newtonsoft.Json.dll">
+    <AppxPackagedFile Include="C:\Users\divya\.nuget\packages\newtonsoft.json\11.0.1\lib\netstandard2.0\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackagesFallback\runtime.win10-arm.microsoft.netcore.universalwindowsplatform\6.0.4\runtimes\win10-arm\nativeassets\uap10.0.15138\clrcompression.dll">
