@@ -6,7 +6,6 @@ using Azure4Alexa.Helper;
 using Azure4Alexa.Models.Payments;
 using Microsoft.Azure;
 using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Queue;
 using Session = AlexaSkillsKit.Speechlet.Session;
 
@@ -54,12 +53,11 @@ namespace Azure4Alexa.Santander
 
         private static async Task PostToQueue()
         {
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-                CloudConfigurationManager.GetSetting("StorageConnectionString"));
-            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-            CloudQueue queue = queueClient.GetQueueReference("paymentqueue");
+            var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+            var queueClient = storageAccount.CreateCloudQueueClient();
+            var queue = queueClient.GetQueueReference("paymentqueue");
             queue.CreateIfNotExists();
-            CloudQueueMessage message = new CloudQueueMessage("TRUE");
+            var message = new CloudQueueMessage("TRUE");
             await queue.AddMessageAsync(message);
         }
     }

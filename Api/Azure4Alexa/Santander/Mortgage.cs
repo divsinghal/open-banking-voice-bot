@@ -6,7 +6,7 @@ namespace Azure4Alexa.Santander
 {
     public class Mortgage
     {
-        public static async Task<SpeechletResponse> GetResults()
+        public static async Task<SpeechletResponse> GetResults(Session session)
         {
             var simpleIntentResponse = ParseResults();
             return AlexaUtils.BuildSpeechletResponse(simpleIntentResponse, true);
