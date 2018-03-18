@@ -1,0 +1,6 @@
+flask
+gunicorn
+pandas
+flask-jsonpify
+flask-restful
+requests
