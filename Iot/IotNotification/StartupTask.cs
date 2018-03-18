@@ -7,6 +7,7 @@ using Windows.ApplicationModel.Background;
 using Windows.Devices.Gpio;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 
 // The Background Application template is documented at http://go.microsoft.com/fwlink/?LinkID=533884&clcid=0x409
 
@@ -18,28 +19,51 @@ namespace IotNotification
         {
             int led_Pin = 35;
             var gpio = GpioController.GetDefault();
-
-            var a = FindMessage();
             GpioPin pin = gpio.OpenPin(led_Pin);
             pin.SetDriveMode(GpioPinDriveMode.Output);
-            pin.Write(GpioPinValue.Low);
-            Task.Delay(1000).Wait();
-            pin.Write(GpioPinValue.High);
-            Task.Delay(1000).Wait();
+
+            while (true)
+            {
+                Task<bool> task = Task.Run(() => FindMessage());
+
+                // Will block until the task is completed...
+                bool result = task.Result;
+                if (result)
+                {
+                    pin.Write(GpioPinValue.High);
+                    Task.Delay(5000).Wait();
+                }
+                else
+                {
+                    pin.Write(GpioPinValue.Low);
+                    Task.Delay(5000).Wait();
+                }
+            }
+
+
         }
 
         private async  Task<bool> FindMessage()
         {
             bool success = false;
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("https://azure4alexaben.azurewebsites.net/api/iot");
-                var response =await client.GetAsync("");
-                var result = response.Content.ReadAsStringAsync().Result;
-                var account = JsonConvert.DeserializeObject<Account>(result);
-                if(account != null){
-                    return true;
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://azure4alexaben.azurewebsites.net/");
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    var response = await client.GetAsync("api/iot");
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    var account = JsonConvert.DeserializeObject<bool>(result);
+                    if (account != null)
+                    {
+                        return true;
+                    }
                 }
+            }
+            catch(Exception ex)
+            {
+                ex = ex;
             }
 
             return false;
