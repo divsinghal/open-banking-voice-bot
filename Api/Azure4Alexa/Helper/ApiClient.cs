@@ -10,17 +10,15 @@ namespace Azure4Alexa.Helper
 {
     public class ApiClient
     {
-        private readonly Uri _baseUri;
         private readonly string _authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIiOiIifQ.CaBX0LuTC5yliNtMt_anrHQcp2lIVY-4UwiFIbc-EBU";
 
         public ApiClient()
         {
-            _baseUri = new Uri("https://santander.openbankproject.com/obp/v3.0.0");
         }
 
         public HttpResponseMessage Get(string apiMethod)
         {
-            var uri = new Uri(_baseUri, apiMethod);
+            var uri = new Uri(apiMethod);
             using (var client = new HttpClient(new HttpClientHandler { UseDefaultCredentials = true }))
             {
                 ConfigureClient(client);
@@ -38,7 +36,7 @@ namespace Azure4Alexa.Helper
 
         public async Task<HttpResponseMessage> GetAsync(string apiMethod)
         {
-            var uri = new Uri(_baseUri, apiMethod);
+            var uri = new Uri(apiMethod);
             using (var client = new HttpClient(new HttpClientHandler { UseDefaultCredentials = true }))
             {
                 ConfigureClient(client);
@@ -65,7 +63,7 @@ namespace Azure4Alexa.Helper
             var message = new HttpRequestMessage
             {
                 Method = method,
-                RequestUri = new Uri(_baseUri, apiMethod)
+                RequestUri = new Uri(apiMethod)
             };
 
             if (method == HttpMethod.Post || method == HttpMethod.Put)
@@ -95,7 +93,7 @@ namespace Azure4Alexa.Helper
             var message = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri(_baseUri, apiMethod),
+                RequestUri = new Uri(apiMethod),
                 Content = new StringContent(json, Encoding.UTF8, "application/json")
             };
 

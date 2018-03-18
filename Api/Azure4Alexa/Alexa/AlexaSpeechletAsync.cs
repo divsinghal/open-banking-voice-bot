@@ -147,6 +147,9 @@ namespace Azure4Alexa.Alexa
                     return await MakePayment.GetResults(session, decimal.Parse(intentRequest.Intent.Slots["amount"].Value), intentRequest.Intent.Slots["account"].Value);
                 case "WINNERS":
                     return await Winners.GetResults();
+                case "MORTGAGE":
+                    return await Mortgage.GetResults();
+                case "SAVINGS":
                 default:
                     return await Task.FromResult<SpeechletResponse>(GetOnLaunchAsyncResult(session));
             }
